@@ -1,0 +1,4 @@
+Crop,MarketPrice,DemandLevel,Region,Recommendation
+Rice,1800,High,Tamil Nadu,"Good market rate, proceed with sale."
+Wheat,2000,Medium,Punjab,"Stable demand, monitor for next 2 weeks."
+Banana,2500,Low,Kerala,"Low demand, consider storage or alternate markets."
