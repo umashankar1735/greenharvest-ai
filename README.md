@@ -24,7 +24,7 @@ GreenHarvest AI is a **GenAI-powered multi-agent system** that helps farmers mak
 | Layer         | Technology                      |
 |---------------|----------------------------------|
 | UI            | [Streamlit](https://streamlit.io)                    |
-| LLM Backend   | [OpenAI GPT-3.5 Turbo](https://platform.openai.com/docs/models/gpt-3-5) [Grok AI](https://x.ai/grok) |
+| LLM Backend   | [OpenAI GPT-3.5 Turbo](https://platform.openai.com/docs/models/gpt-3-5) & [Grok AI](https://x.ai/grok) |
 | Agent Framework | Modular Python-based agents |
 | DB            | SQLite (for user interaction logs) |
 | Data Sources  | Local CSVs for farmers & market trends |
@@ -38,12 +38,73 @@ GreenHarvest AI is a **GenAI-powered multi-agent system** that helps farmers mak
 
 ---
 
-## 🧪 How to Run Locally
+🧪 How to Run Locally – GreenHarvest AI
+Follow these steps to set up and run the GreenHarvest AI app on your local machine.
+✅ Prerequisites
 
-1. **Clone the repo**
+- Python 3.9 or higher
+- An GrokAI API key (from https://x.ai/grok)
+- Git and pip installed
+
+1️⃣ Clone the Repository
+
 ```bash
 git clone https://github.com/umashankar1735/greenharvest-ai.git
 cd greenharvest-ai
+```
 
+2️⃣ (Optional) Create and Activate a Virtual Environment
+```bash
+python -m venv venv
+venv\Scripts\activate         # On Windows
+# OR
+source venv/bin/activate       # On Mac/Linux
+```
 
+3️⃣ Install Required Dependencies
+```bash
+pip install -r requirements.txt
+```
 
+4️⃣ Set Your OpenAI API Key
+Create a file at `.streamlit/secrets.toml` and paste the following:
+```bash
+[general]
+uma_shankar = "sk-your-openai-api-key"
+```
+⚠️ Replace with your actual API key. 🔒 Do not push this file to GitHub.
+
+5️⃣ Run the Streamlit Web App
+```bash
+streamlit run app.py
+```
+
+Open the app in your browser at: http://localhost:8501
+
+🧪 Run the CLI Version (Optional)
+```bash
+python main.py
+```
+🎬 Demo Screenshot
+![image](https://github.com/user-attachments/assets/26b53ece-c926-4b31-b6e5-91b4b3c026a5)
+![image](https://github.com/user-attachments/assets/6e7021ce-4103-4625-a9bc-a2a1b5e60ca3)
+![image](https://github.com/user-attachments/assets/bf79e468-8ce1-428b-9db0-6dab39f1a9ea)
+
+open in streamlit at: https://greenharvest-ai-dert6gb5xv7ajc2eoolxcc.streamlit.app/
+
+✅ Future Enhancements
+Integration with real-time APIs for weather and mandi data
+Embedding-based retrieval using FAISS
+Smart alert system for pest outbreaks
+Mobile UI for low-bandwidth access
+
+🤝 Contributors
+Uma Shankar – AI Developer, Architect, Designer
+Harshitha   – Web APP Developer, Designer
+Supported by mentors and the community of Hackathon
+
+📜 License
+This project is licensed under the MIT License.
+Use freely with attribution 🌱
+
+💡 “Let’s empower farmers with AI. One field at a time.” — Team GreenHarvest AI
