@@ -5,8 +5,9 @@ import openai
 
 st.title("🌾 AgriGPT - Sustainable Farming Assistant")
 
-# Initialize OpenAI (API key should be in Streamlit secrets)
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+from openai import OpenAI
+
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])  # Replace old openai.api_key
 
 # Load dataset
 try:
