@@ -1,24 +1,16 @@
-from openai import OpenAI
-import streamlit as st
+from groq import Groq  # Replace OpenAI import
 
 def generate_llm_advice(prompt):
     try:
-        # Initialize client with error handling
-        client = OpenAI(
-            api_key=st.secrets["OPENAI_API_KEY"],  # Updated key will auto-load here
-            timeout=10  # Prevents hanging
-        )
-        
+        client = Groq(api_key=st.secrets["GROQ_API_KEY"])  # New key
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo-0125",  # Newer model version
+            model="mixtral-8x7b-32768",  # Groq's free model
             messages=[
                 {"role": "system", "content": "You are AgriGPT..."},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.7,
-            max_tokens=350  # More efficient usage
+            temperature=0.7
         )
         return response.choices[0].message.content
-        
     except Exception as e:
-        return f"⚠️ Agricultural Insights Unavailable. Technical Details: {str(e)}"
+        return f"🌾 Fallback Advice: Monitor soil moisture. [Error: {e}]"
