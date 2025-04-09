@@ -9,6 +9,10 @@ from openai import OpenAI
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])  # Replace old openai.api_key
 
+st.write("Key exists:", "OPENAI_API_KEY" in st.secrets)
+if "OPENAI_API_KEY" in st.secrets:
+    st.write("Key length:", len(st.secrets["OPENAI_API_KEY"]))
+    
 # Load dataset
 try:
     df = pd.read_csv("data/farmer_advisor_dataset.csv")
