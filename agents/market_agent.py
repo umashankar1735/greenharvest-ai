@@ -1,29 +1,32 @@
-# agents/market_agent.py
 import pandas as pd
 import os
 
 def get_market_insights(crop, region):
-    file_path = os.path.join("data", "market_researcher_dataset.csv")
     try:
-        df = pd.read_csv(file_path)
-        match = df[(df["Crop"].str.lower() == crop.lower()) &
-                   (df["Region"].str.lower() == region.lower())]
+        df = pd.read_csv("data/market_researcher_dataset.csv")
+        match = df[(df["Crop"].str.lower() == crop.lower()) & 
+                  (df["Region"].str.lower() == region.lower())]
+        
         if not match.empty:
             record = match.iloc[0]
             return {
-                "Market Price": f"₹{record['MarketPrice']} per quintal",
-                "Demand Level": record["DemandLevel"],
-                "Recommendation": record["Recommendation"]
+                "Current Price": f"₹{record['MarketPrice']}/quintal",
+                "Demand Trend": record["DemandLevel"],
+                "Market Advice": record["Recommendation"],
+                "Price Trend": "Stable" if record["DemandLevel"] == "Medium" else 
+                             "Increasing" if record["DemandLevel"] == "High" else "Decreasing"
             }
         else:
             return {
-                "Market Price": "Not found",
-                "Demand Level": "Unknown",
-                "Recommendation": "Check local mandi data."
+                "Current Price": "Data not available",
+                "Demand Trend": "Unknown",
+                "Market Advice": "Check local mandi rates",
+                "Price Trend": "Unknown"
             }
     except Exception as e:
         return {
-            "Market Price": None,
-            "Demand Level": None,
-            "Recommendation": "Market data fetch failed. Try again."
+            "Current Price": "Error fetching data",
+            "Demand Trend": "Error",
+            "Market Advice": "Please try again later",
+            "Price Trend": "Error"
         }

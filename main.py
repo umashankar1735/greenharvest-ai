@@ -18,15 +18,15 @@ def run_agriGPT():
 
     # Step 2: Get weather info based on location
     print("\n🌦️ Weather Forecast:")
-    weather = get_weather_forecast(farmer_context["location"])
+    weather = get_weather_forecast(farmer_context["Location"])
     for key, value in weather.items():
         print(f"  {key}: {value}")
 
      # Step 3: Get agro advice
     print("\n🌿 Agro Expert Advice:")
     expert_advice = get_agro_advice(
-        crop=farmer_context["crop"],
-        soil_type=farmer_context["soil_type"]
+        crop=farmer_context["Crop"],
+        soil_type=farmer_context["Soil_Type"]
     )
     for key, value in expert_advice.items():
         print(f"  {key}: {value}")
@@ -35,8 +35,8 @@ def run_agriGPT():
     # Step 4: Get market insights
     print("\n📈 Market Intelligence:")
     market_info = get_market_insights(
-        crop=farmer_context["crop"],
-        region=farmer_context["location"]
+        crop=farmer_context["Crop"],
+        region=farmer_context["Location"]
     )
     for key, value in market_info.items():
         print(f"  {key}: {value}")
@@ -56,7 +56,6 @@ if __name__ == "__main__":
     print(final_report)
 
 log_interaction(result["Farmer Info"], result["Weather Forecast"], result["Expert Advice"], result["Market Trends"])
-
 
 
 
