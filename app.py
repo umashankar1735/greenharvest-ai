@@ -7,11 +7,9 @@ st.title("🌾 AgriGPT - Sustainable Farming Assistant")
 
 from openai import OpenAI
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])  # Replace old openai.api_key
-
-st.write("Key exists:", "OPENAI_API_KEY" in st.secrets)
-if "OPENAI_API_KEY" in st.secrets:
-    st.write("Key length:", len(st.secrets["OPENAI_API_KEY"]))
+# For Groq
+from groq import Groq
+client = Groq(api_key=st.secrets["GROQ_API_KEY"])  # Key name MUST match secrets
     
 # Load dataset
 try:
